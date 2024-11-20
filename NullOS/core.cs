@@ -86,7 +86,7 @@ namespace NullOS
 
                     case "help":
                         Console.WriteLine(@"
-Total commands: 13
+Total commands: 12
 Silent commands: 2
 
 1. exit - exit this system
@@ -97,9 +97,8 @@ Silent commands: 2
 6. cat - read file
 7. echo - write file
 8. ls - list files and directories
-9. cd - change directory
-10. su - change user
-11. help - this list
+9. su - change user
+10. help - this list
 ");
                         break; //ATTENTION!
 
@@ -218,11 +217,11 @@ Silent commands: 2
                         }
                         break; //DONE
 
-                    case "cd":
+                    //case "cd":
                         Console.Write("Enter directory name: ");
                         buffer = Console.ReadLine();
                         current_directory += @"\" + buffer;
-                        break; //+-
+                        break; // ls DONE || cd off
 
                     case "su":
                         Console.Write("Enter username: ");
