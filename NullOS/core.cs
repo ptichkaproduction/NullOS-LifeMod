@@ -33,8 +33,9 @@ namespace NullOS
 
             string user_config_path = "configs/user.json";
             string system_config_path = "configs/system.json";
+            string main_file_system = Directory.GetCurrentDirectory() + @"\usr_data\";
 
-            string current_directory = Directory.GetCurrentDirectory() + @"\usr_data\";
+            string current_directory = main_file_system;
 
             string buffer = "";
 
@@ -43,7 +44,9 @@ namespace NullOS
 
             bool check_config_user = File.Exists(user_config_path);
             bool check_config_system = File.Exists(system_config_path);
-            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS", version = "0.6", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
+            bool check_main_file_system = Directory.Exists(main_file_system);
+            if (check_main_file_system == false) { Directory.CreateDirectory(main_file_system); }
+            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS", version = "0.7", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
             if (check_config_user == false) { var info = write_user_config(); write_config(info, user_config_path); }
 
             bool start = true;
@@ -177,9 +180,13 @@ Silent commands: 2
                         break; //DONE
 
                     case "touch":
-                        Console.Write("Enter path to file: ");
-                        path = Console.ReadLine();
-                        create_file(current_directory + path);
+                        try
+                        {
+                            Console.Write("Enter path to file: ");
+                            path = Console.ReadLine();
+                            create_file(current_directory + path);
+                        }
+                        catch (Exception ex)  { Console.WriteLine("Unknown err"); }
                         break; //DONE
 
                     case "cat":
@@ -189,18 +196,19 @@ Silent commands: 2
                             path = Console.ReadLine();
                             Console.WriteLine(read_file(current_directory + path));
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error. The file may not exist or could not be accessed.");
-                        }
+                        catch (Exception e) { Console.WriteLine("Error. The file may not exist or could not be accessed."); }
                         break; //DONE
 
                     case "echo":
-                        Console.Write("Enter text: ");
-                        data = Console.ReadLine();
-                        Console.Write("Enter path to file: ");
-                        path = Console.ReadLine();
-                        write_file(current_directory + path, data);
+                        try
+                        {
+                            Console.Write("Enter text: ");
+                            data = Console.ReadLine();
+                            Console.Write("Enter path to file: ");
+                            path = Console.ReadLine();
+                            write_file(current_directory + path, data);
+                        }
+                        catch (Exception e) { Console.WriteLine("Unknown err"); }
                         break; //DONE
 
                     case "ls":
@@ -241,6 +249,36 @@ Silent commands: 2
                             Console.WriteLine("username or password is not correct.");
                         }
                         break; //not bad
+
+                    case "rm":
+                        try
+                        {
+                            Console.Write("Enter path: ");
+                            path = Console.ReadLine();
+                            delete_file(current_directory + path);
+                        }
+                        catch (Exception e) { Console.WriteLine("Unknown err"); }
+                        break;
+
+                    case "mkdir":
+                        try
+                        {
+                            Console.Write("Enter path: ");
+                            path = Console.ReadLine();
+                            create_directory(current_directory + path);
+                        }
+                        catch (Exception e) { Console.WriteLine("Unknown err"); }
+                        break;
+
+                    case "rf":
+                        try
+                        {
+                            Console.Write("Enter path to directory: ");
+                            path = Console.ReadLine();
+                            delete_directory(current_directory + path);
+                        }
+                        catch (Exception e) { Console.WriteLine("Unknown err"); }
+                        break;
                 }
             } //commands
         }
@@ -355,6 +393,18 @@ Silent commands: 2
         public static void create_file(string path)
         {
             File.Create(path);
+        }
+        public static void delete_file (string path)
+        {
+            File.Delete(path);
+        }
+        public static void create_directory (string path)
+        {
+            Directory.CreateDirectory(path);
+        }
+        public static void delete_directory (string path)
+        {
+            Directory.Delete(path);
         }
         public static bool exists(string path)
         {
