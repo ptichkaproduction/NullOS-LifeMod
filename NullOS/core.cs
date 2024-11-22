@@ -7,7 +7,6 @@
 // 1. Change user password (passwd)
 // 2. USEEEEEERS!!!!!!!!!!!!!!!
 // 3. Base programms
-// 4. hot keys
 //
 
 using System;
@@ -136,7 +135,7 @@ Silent commands: 2
 
                     case "ver":
                         ver(current_user);
-                        break; //okaaay..
+                        break; //okaaay.. || SYSTEM
 
                     case "edit":
                         if (dev == "true")
@@ -181,7 +180,7 @@ Silent commands: 2
                             else { Console.WriteLine("Canceled."); }
                         }
                         else { Console.Write("["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] Operation not permitted.\n"); }
-                        break; //DONE
+                        break; //DONE || SYSTEM
 
                     case "touch":
                         try
@@ -283,6 +282,38 @@ Silent commands: 2
                         }
                         catch (Exception e) { Console.WriteLine("Unknown err"); }
                         break; //DONE || FILESYSTEM
+
+                    case "calc":
+                        Console.WriteLine("Calculator. Select operand (+, -, *, /):");
+                        var work = Console.ReadLine();
+                        Console.WriteLine("Enter first number:");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter second number:");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        double c = 0;
+                        switch (work)
+                        {
+                            default:
+                                Console.WriteLine("Unknown operand.");
+                                break;
+                            case "+":
+                                c = a + b;
+                                Console.WriteLine("Result: " + c);
+                                break;
+                            case "-":
+                                c = a - b;
+                                Console.WriteLine("Result: " + c);
+                                break;
+                            case "*":
+                                c = a * b;
+                                Console.WriteLine("Result: " + c);
+                                break;
+                            case "/":
+                                c = a / b;
+                                Console.WriteLine("Result: " + c);
+                                break;
+                        }
+                        break;
                 }
             } //commands
         }
