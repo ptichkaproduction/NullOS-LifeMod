@@ -7,7 +7,7 @@
 // 1. Change user password (passwd)
 // 2. USEEEEEERS!!!!!!!!!!!!!!!
 // 3. Base programms
-// 4. file system
+// 4. hot keys
 //
 
 using System;
@@ -187,7 +187,7 @@ Silent commands: 2
                             create_file(current_directory + path);
                         }
                         catch (Exception ex)  { Console.WriteLine("Unknown err"); }
-                        break; //DONE
+                        break; //DONE || FILESYSTEM
 
                     case "cat":
                         try
@@ -197,7 +197,7 @@ Silent commands: 2
                             Console.WriteLine(read_file(current_directory + path));
                         }
                         catch (Exception e) { Console.WriteLine("Error. The file may not exist or could not be accessed."); }
-                        break; //DONE
+                        break; //DONE || FILESYSTEM
 
                     case "echo":
                         try
@@ -209,7 +209,7 @@ Silent commands: 2
                             write_file(current_directory + path, data);
                         }
                         catch (Exception e) { Console.WriteLine("Unknown err"); }
-                        break; //DONE
+                        break; //DONE || FILESYSTEM
 
                     case "ls":
                         //Console.WriteLine(files_list());
@@ -229,7 +229,7 @@ Silent commands: 2
                         Console.Write("Enter directory name: ");
                         buffer = Console.ReadLine();
                         current_directory += @"\" + buffer;
-                        break; // ls DONE || cd off
+                        break; // ls DONE || cd off || FILESYSTEM
 
                     case "su":
                         Console.Write("Enter username: ");
@@ -248,7 +248,7 @@ Silent commands: 2
                         {
                             Console.WriteLine("username or password is not correct.");
                         }
-                        break; //not bad
+                        break; //not bad 
 
                     case "rm":
                         try
@@ -258,7 +258,7 @@ Silent commands: 2
                             delete_file(current_directory + path);
                         }
                         catch (Exception e) { Console.WriteLine("Unknown err"); }
-                        break;
+                        break; //DONE || FILESYSTEM
 
                     case "mkdir":
                         try
@@ -268,7 +268,7 @@ Silent commands: 2
                             create_directory(current_directory + path);
                         }
                         catch (Exception e) { Console.WriteLine("Unknown err"); }
-                        break;
+                        break; //DONE || FILESYSTEM
 
                     case "rf":
                         try
@@ -278,7 +278,7 @@ Silent commands: 2
                             delete_directory(current_directory + path);
                         }
                         catch (Exception e) { Console.WriteLine("Unknown err"); }
-                        break;
+                        break; //DONE || FILESYSTEM
                 }
             } //commands
         }
