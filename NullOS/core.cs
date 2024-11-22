@@ -87,6 +87,10 @@ namespace NullOS
                         Console.WriteLine($"Command {command} not exist.");
                         break; //DONE
 
+                    case @"":
+                        start = false;
+                        break; // DONE? || HOTKEY: "\u0004" - "CTRL + D" || ANALOG: "exit" COMMAND
+
                     case "help":
                         Console.WriteLine(@"
 Total commands: 12
