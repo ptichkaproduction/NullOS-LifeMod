@@ -32,9 +32,9 @@ namespace NullOS
 
             string user_config_path = "configs/user.json";
             string system_config_path = "configs/system.json";
-            string main_file_system = Directory.GetCurrentDirectory() + @"\usr_data\";
+            string main_file_system = Directory.GetCurrentDirectory() + @"/usr_data";
 
-            string current_directory = main_file_system;
+            string current_directory = main_file_system + @"/";
 
             string buffer = "";
 
