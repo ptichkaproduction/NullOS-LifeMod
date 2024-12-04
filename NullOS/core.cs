@@ -13,6 +13,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -84,7 +85,14 @@ namespace NullOS
                 switch (command)
                 {
                     default:
-                        Console.WriteLine($"Command {command} not exist.");
+                        bool file_check = File.Exists(current_directory + command);
+                        //Console.WriteLine(command);
+                        //Console.WriteLine(file_check);
+                        if (file_check) { try { Process.Start(current_directory + command); } catch (Exception e) { Console.WriteLine("Err. Comments:\n" + e.ToString()); } }
+                        else
+                        {
+                            Console.WriteLine($"Command {command} not exist.");
+                        }
                         break; //DONE
 
                     case @"":
@@ -315,6 +323,10 @@ Silent commands: 2
                                 break;
                         }
                         break;
+
+                    case "test":
+                        Process.Start("notepad.exe");
+                        break;
                 }
             } //commands
         }
@@ -480,6 +492,6 @@ Silent commands: 2
         public string? system { get; set; }
         public string? version { get; set; }
         public string? dev { get; set; }
-        public string pass { get; set; }
+        public string? pass { get; set; }
     }
 }
