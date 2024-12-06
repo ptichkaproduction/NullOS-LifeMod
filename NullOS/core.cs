@@ -79,7 +79,14 @@ namespace NullOS
                 string dev = read_dev();
                 read_device_name();
                 //Console.WriteLine($"Current directory: {current_directory}");
+                if (current_user != "root")
+                {
                 Console.ForegroundColor = ConsoleColor.Green; Console.Write(current_user); Console.ForegroundColor = ConsoleColor.White; Console.Write("@"); Console.ForegroundColor = ConsoleColor.Cyan; Console.Write(device_name); Console.ForegroundColor = ConsoleColor.White; Console.Write("$ ");
+                }
+                else
+                {
+                Console.ForegroundColor = ConsoleColor.Red; Console.Write(current_user); Console.ForegroundColor = ConsoleColor.White; Console.Write("@"); Console.ForegroundColor = ConsoleColor.Cyan; Console.Write(device_name); Console.ForegroundColor = ConsoleColor.White; Console.Write("$ ");
+                }
                 string command = Console.ReadLine();
 
                 switch (command)
@@ -171,6 +178,14 @@ Silent commands: 2
                         }
                         else { Console.Write("["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] Operation not permitted.\n"); }
                         break; //idk
+
+                    case "passwd":
+                        Console.Write("Enter new password: ");
+                        string pass_buff = Console.ReadLine();
+                        string buff_login = read_user();
+                        var buff_info = new { user = buff_login, pass = pass_buff };
+                        write_config(buff_info , user_config_path);
+                        break;
                         
                     case "reset":
                         if (current_user == "root")
