@@ -47,7 +47,7 @@ namespace NullOS
             bool check_config_system = File.Exists(system_config_path);
             bool check_main_file_system = Directory.Exists(main_file_system);
             if (check_main_file_system == false) { Directory.CreateDirectory(main_file_system); }
-            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS", version = "0.7", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
+            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS", version = "0.9", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
             if (check_config_user == false) { var info = write_user_config(); write_config(info, user_config_path); }
 
             bool start = true;
