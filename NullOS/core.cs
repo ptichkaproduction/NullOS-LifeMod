@@ -28,9 +28,9 @@ namespace NullOS
     {
         public static void core_main()
         {
-            Console.WriteLine("----------------");
-            Console.WriteLine("Loaded!");
-            Console.WriteLine("----------------");
+            Console.ForegroundColor = ConsoleColor.Cyan; Console.WriteLine("<<==============>>");
+            Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Loaded!");
+            Console.ForegroundColor = ConsoleColor.Cyan; Console.WriteLine("<<==============>>\n"); Console.ForegroundColor = ConsoleColor.White;
 
             string user_config_path = "configs/user.json";
             string system_config_path = "configs/system.json";
@@ -56,10 +56,16 @@ namespace NullOS
             string user = read_user();
             string current_user = user;
             string user_pass = read_user_pass();
+            string device_name = read_device_name();
+            string system = read_system();
+            string version = read_version();
 
-            while(login)
+            Console.Write(system + " Life Modification " + version + "\n");
+            Console.Write("Device name: " + device_name + "\n");
+
+            while (login)
             {
-                Console.Write("Enter login: ");
+                Console.Write("\nEnter login: ");
                 string buffer_login = Console.ReadLine();
                 Console.Write("Enter password: ");
                 string buffer_password = Console.ReadLine();
@@ -67,15 +73,15 @@ namespace NullOS
                 {
                     login = false;
                     Console.Write("\n");
+                    Console.Write("Welcome, " + current_user + "!\n");
+                    Console.WriteLine("Last login: " + DateTime.Now + "\n");
                 }
-                else { Console.WriteLine("Login or password incorrect. "); }
-
+                else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Login or password incorrect. "); Console.ForegroundColor = ConsoleColor.White; }
             } //login
 
             while (start)
             {
                 user = read_user();
-                string device_name = read_device_name();
                 string dev = read_dev();
                 read_device_name();
                 //Console.WriteLine($"Current directory: {current_directory}");
@@ -88,7 +94,6 @@ namespace NullOS
                 Console.ForegroundColor = ConsoleColor.Red; Console.Write(current_user); Console.ForegroundColor = ConsoleColor.White; Console.Write("@"); Console.ForegroundColor = ConsoleColor.Cyan; Console.Write(device_name); Console.ForegroundColor = ConsoleColor.White; Console.Write("$ ");
                 }
                 string command = Console.ReadLine();
-
                 switch (command)
                 {
                     default:
@@ -98,7 +103,7 @@ namespace NullOS
                         if (file_check) { try { Process.Start(current_directory + command); } catch (Exception e) { Console.WriteLine("Err. Comments:\n" + e.ToString()); } }
                         else
                         {
-                            Console.WriteLine($"Command {command} not exist.");
+                            Console.WriteLine($"Command '{command}' not exist.");
                         }
                         break; //DONE
 
@@ -108,7 +113,7 @@ namespace NullOS
 
                     case "help":
                         Console.WriteLine(@"
-Total commands: 12
+Total commands: 14
 Silent commands: 2
 
 1. exit - exit this system
@@ -120,12 +125,21 @@ Silent commands: 2
 7. echo - write file
 8. ls - list files and directories
 9. su - change user
-10. help - this list
+10. time - show date and time
+11. Clear - clear console
+11. help - this list
 ");
                         break; //ATTENTION!
 
+                    case "clear":
+                        Console.Clear();
+                            break;
                     case "":
-                        break; //DONE
+                        break; //
+
+                    case "time":
+                        Console.WriteLine(DateTime.Now);
+                        break;
 
                     case "exit":
                         start = false;
@@ -146,7 +160,7 @@ Silent commands: 2
                         break; //DONE?
 
                     case "uname":
-                        Console.WriteLine("nullOS C#");
+                        Console.WriteLine("nullOS C# - Life Modification");
                         break; //+-
 
                     case "ver":
@@ -436,12 +450,12 @@ Silent commands: 2
             Console.WriteLine(@$"
 
         <-. (`-')_      {current_user}@{device_name}
-       \( OO) )         OS: {system}
+       \( OO) )         OS: {system} Life Modification
     ,--./ ,--/          Ver: {version}
-    |   \ |  |          
+    |   \ |  |          Device name: {device_name}
     |  . '|  |)         
     |  |\    |          
-    |  | \   |          
+    |  | \   |          Custon by perryTheBallo0n
     `--'  `--' 
 ");
         }
