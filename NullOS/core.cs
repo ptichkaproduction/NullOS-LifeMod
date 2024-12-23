@@ -57,6 +57,9 @@ namespace NullOS
             string current_user = user;
             string user_pass = read_user_pass();
 
+            Thread dateThread = new Thread(check_date);
+            //dateThread.Start();
+
             while(login)
             {
                 Console.Write("Enter login: ");
@@ -108,7 +111,7 @@ namespace NullOS
 
                     case "help":
                         Console.WriteLine(@"
-Total commands: 12
+Total commands: 13
 Silent commands: 2
 
 1. exit - exit this system
@@ -121,6 +124,7 @@ Silent commands: 2
 8. ls - list files and directories
 9. su - change user
 10. help - this list
+11. Beep - BEEP XD
 ");
                         break; //ATTENTION!
 
@@ -340,7 +344,11 @@ Silent commands: 2
                         break;
 
                     case "test":
-                        Process.Start("notepad.exe");
+                        
+                        break;
+
+                    case "beep":
+                        Console.Beep();
                         break;
                 }
             } //commands
@@ -472,6 +480,16 @@ Silent commands: 2
         public static bool exists(string path)
         {
             return File.Exists(path);
+        }
+        public static void check_date()
+        {
+            while (true) { 
+                String date = DateTime.Now.ToString();
+                Console.Write(date + "\n");
+                Thread.Sleep(1000);
+                Console.Clear();
+            }
+            
         }
         public static void files_list(string current_directory)
         {
