@@ -7,7 +7,7 @@
 // 1. Change user password (passwd)
 // 2. USEEEEEERS!!!!!!!!!!!!!!!
 // 3. Base programms
-// git check
+//
 //
 
 using System;
@@ -111,7 +111,7 @@ namespace NullOS
 
                     case "help":
                         Console.WriteLine(@"
-Total commands: 13
+Total commands: 14
 Silent commands: 2
 
 1. exit - exit this system
@@ -125,6 +125,7 @@ Silent commands: 2
 9. su - change user
 10. help - this list
 11. Beep - BEEP XD
+12 find - search files
 ");
                         break; //ATTENTION!
 
