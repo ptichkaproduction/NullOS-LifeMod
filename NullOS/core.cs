@@ -81,7 +81,6 @@ namespace NullOS
                 string device_name = read_device_name();
                 string dev = read_dev();
                 read_device_name();
-                //Console.WriteLine($"Current directory: {current_directory}");
                 if (current_user != "root")
                 {
                 Console.ForegroundColor = ConsoleColor.Green; Console.Write(current_user); Console.ForegroundColor = ConsoleColor.White; Console.Write("@"); Console.ForegroundColor = ConsoleColor.Cyan; Console.Write(device_name); Console.ForegroundColor = ConsoleColor.White; Console.Write("$ ");
@@ -426,7 +425,6 @@ Silent commands: 2
                 if (buffer_user == "root")
                 {
                     Console.WriteLine("Invalid value.");
-                    //return null;
                 }
                 else
                 {
@@ -434,7 +432,6 @@ Silent commands: 2
                     string pass = Console.ReadLine();
                     info = new { user = buffer_user, pass = pass };
                     success = false;
-                    //return info;
                 }
             }
             return info;
@@ -501,21 +498,13 @@ Silent commands: 2
         }
         public static void files_list(string current_directory)
         {
-            //return Directory.GetFiles(Directory.GetCurrentDirectory());
-            //Console.WriteLine(Directory.GetDirectories(Directory.GetCurrentDirectory()));
-            //Console.WriteLine(Directory.GetFiles(Directory.GetCurrentDirectory()));
-
-            // если папка существует
             if (Directory.Exists(current_directory))
             {
-                //Console.WriteLine("Подкаталоги:");
                 string[] dirs = Directory.GetDirectories(current_directory);
                 foreach (string s in dirs)
                 {
                     Console.WriteLine("<DIR>    " + s);
                 }
-                //Console.WriteLine();
-                //Console.WriteLine("Файлы:");
                 string[] files = Directory.GetFiles(current_directory);
                 foreach (string s in files)
                 {
