@@ -7,7 +7,7 @@
 // 1. Change user password (passwd)
 // 2. USEEEEEERS!!!!!!!!!!!!!!!
 // 3. Base programms
-//
+// git check
 //
 
 using System;
@@ -345,6 +345,13 @@ Silent commands: 2
 
                     case "test":
                         
+                        break;
+                    
+                    case "find":
+                        string directoryPath = current_directory;
+                        Console.Write("Enter file name: "); string filename_buff = Console.ReadLine() + "*";
+                        string[] files = Directory.GetFiles(directoryPath, filename_buff);
+                        foreach (var file in files) { Console.WriteLine(file); }
                         break;
 
                     case "beep":
