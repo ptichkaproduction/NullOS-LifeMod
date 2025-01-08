@@ -357,6 +357,51 @@ Silent commands: 2
                     case "beep":
                         Console.Beep();
                         break;
+                    
+                    case "compare":
+                        Console.WriteLine("Hello World! (lol, press enter)");
+
+                        Console.ReadLine();
+
+                        Console.WriteLine("For correct operation, you need to specify files with the same number of lines");
+
+                        Console.Write("Enter file1 path: ");
+                        string buffer1 = current_directory + Console.ReadLine();
+                        Console.Write("Enter file2 path: ");
+                        string buffer2 = current_directory + Console.ReadLine();
+
+                        if (!File.Exists(buffer1) || !File.Exists(buffer2))
+                        {
+                            Console.WriteLine("[ERROR] File 1 or File 2 is missing!.");
+                            return;
+                        }
+
+                        using (StreamReader reader1 = new StreamReader(buffer1))
+                        {
+                            using (StreamReader reader2 = new StreamReader(buffer2))
+                            {
+                                string line1;
+                                string line2;
+                                int lineNumber = 1;
+
+                                while ((line1 = reader1.ReadLine()) != null && (line2 = reader2.ReadLine()) != null)
+                                {
+                                    if (line1 != line2)
+                                    {
+                                        Console.WriteLine($"Difference found on line {lineNumber}:");
+                                        Console.WriteLine($"File 1: {line1}");
+                                        Console.WriteLine($"File 2: {line2}");
+                                    }
+                                    lineNumber++;
+                                }
+        
+                                if (reader1.ReadLine() != null || reader2.ReadLine() != null)
+                                {
+                                    Console.WriteLine("[ERROR] File 1 and File 2 have not been correct!.");
+                                }
+                            }
+                        }
+                        break;
                 }
             } //commands
         }
