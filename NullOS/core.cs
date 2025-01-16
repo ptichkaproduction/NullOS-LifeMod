@@ -1,5 +1,5 @@
 ﻿//
-// Created by aswer 
+// Created by aswer, custom by PerryTheBalloon
 //
 // at 26.10.2024
 //
@@ -22,15 +22,16 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NullOS
+namespace NullOS_LifeMod
 {
     internal class core
     {
         public static void core_main()
         {
-            Console.WriteLine("----------------");
-            Console.WriteLine("Loaded!");
-            Console.WriteLine("----------------");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White; Console.WriteLine("<---------------->");
+            Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Loaded!");
+            Console.ForegroundColor = ConsoleColor.White; Console.WriteLine("<---------------->");
 
             string user_config_path = "configs/user.json";
             string system_config_path = "configs/system.json";
@@ -47,7 +48,7 @@ namespace NullOS
             bool check_config_system = File.Exists(system_config_path);
             bool check_main_file_system = Directory.Exists(main_file_system);
             if (check_main_file_system == false) { Directory.CreateDirectory(main_file_system); }
-            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS", version = "0.9", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
+            if (check_config_system == false) { Directory.CreateDirectory("configs"); string buffer_device_name = write_system_config(); var info = new {system = "nullOS Life Modification", version = "0.9", device_name = buffer_device_name, dev = "false" }; write_config(info, system_config_path); }
             if (check_config_user == false) { var info = write_user_config(); write_config(info, user_config_path); }
 
             bool start = true;
@@ -70,8 +71,10 @@ namespace NullOS
                 {
                     login = false;
                     Console.Write("\n");
+                    Console.Write("Welcome, " + current_user + "!\n");
+                    Console.WriteLine("Last login: " + DateTime.Now + "\n");
                 }
-                else { Console.WriteLine("Login or password incorrect. "); }
+                else { Console.Write("["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] Login or password incorrect. Try again.\n");  }
 
             } //login
 
@@ -100,18 +103,18 @@ namespace NullOS
                         if (file_check) { try { Process.Start(current_directory + command); } catch (Exception e) { Console.WriteLine("Err. Comments:\n" + e.ToString()); } }
                         else
                         {
-                            Console.WriteLine($"Command {command} not exist.");
+                            Console.WriteLine($"Command '{command}' not exist.");
                         }
                         break; //DONE
-
+                    
                     case @"":
                         start = false;
                         break; // DONE? || HOTKEY: "\u0004" - "CTRL + D" || ANALOG: "exit" COMMAND
 
                     case "help":
                         Console.WriteLine(@"
-Total commands: 14
-Silent commands: 2
+Total commands: 15
+Silent commands: 3
 
 1. exit - exit this system
 2. uname - system name
@@ -123,8 +126,9 @@ Silent commands: 2
 8. ls - list files and directories
 9. su - change user
 10. help - this list
-11. Beep - BEEP XD
-12 find - search files
+11. beep - BEEP XD
+12. find - search files
+13. clear/clr - clear the screen 
 ");
                         break; //ATTENTION!
 
@@ -150,7 +154,7 @@ Silent commands: 2
                         break; //DONE?
 
                     case "uname":
-                        Console.WriteLine("nullOS C#");
+                        Console.WriteLine("nullOS Life Modification C#");
                         break; //+-
 
                     case "ver":
@@ -227,7 +231,7 @@ Silent commands: 2
                             path = Console.ReadLine();
                             Console.WriteLine(read_file(current_directory + path));
                         }
-                        catch (Exception e) { Console.WriteLine("Error. The file may not exist or could not be accessed."); }
+                        catch (Exception e) { Console.Write("["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] The file may not exist or could not be accessed."); }
                         break; //DONE || FILESYSTEM
 
                     case "echo":
@@ -277,7 +281,7 @@ Silent commands: 2
                         }
                         else
                         {
-                            Console.WriteLine("username or password is not correct.");
+                            Console.Write("\n["); Console.ForegroundColor = ConsoleColor.Red ; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] username or password is not correct.");
                         }
                         break; //not bad 
 
@@ -322,7 +326,7 @@ Silent commands: 2
                         switch (work)
                         {
                             default:
-                                Console.WriteLine("Unknown operand.");
+                                Console.Write("\n["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] Unknown operand.");
                                 break;
                             case "+":
                                 c = a + b;
@@ -341,6 +345,14 @@ Silent commands: 2
                                 Console.WriteLine("Result: " + c);
                                 break;
                         }
+                        break;
+
+                    case "clear":
+                        Console.Clear();
+                        break;
+
+                    case "clr":
+                        Console.Clear();
                         break;
 
                     case "test":
@@ -372,7 +384,7 @@ Silent commands: 2
 
                         if (!File.Exists(buffer1) || !File.Exists(buffer2))
                         {
-                            Console.WriteLine("[ERROR] File 1 or File 2 is missing!.");
+                            Console.Write("\n["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] File 1 or File 2 is missing!.");
                             return;
                         }
 
@@ -397,11 +409,39 @@ Silent commands: 2
         
                                 if (reader1.ReadLine() != null || reader2.ReadLine() != null)
                                 {
-                                    Console.WriteLine("[ERROR] File 1 and File 2 have not been correct!.");
+                                    Console.Write("\n["); Console.ForegroundColor = ConsoleColor.Red; Console.Write("ERROR"); Console.ForegroundColor = ConsoleColor.White; Console.Write("] File 1 and File 2 have not been correct!.");
                                 }
                             }
                         }
                         break;
+
+                    case "thecakeisalie":
+                        Console.WriteLine(@"
+            ,:/+/-
+            /M/              .,-=;//;-
+       .:/= ;MH/,    ,=/+%$XH@MM#@:
+      -$##@+$###@H@MMM#######H:.    -/H#
+ .,H@H@ X######@ -H#####@+-     -+H###@X
+  .,@##H;      +XM##M/,     =%@###@X;-
+X%-  :M##########$.    .:%M###@%:
+M##H,   +H@@@$/-.  ,;$M###@%,          -
+M####M=,,---,.-%%H####M$:          ,+@##
+@##################@/.         :%H##@$-
+M###############H,         ;HM##M$=
+#################.    .=$M##M$=
+################H..;XM##M$=          .:+
+M###################@%=           =+@MH%
+@#################M/.         =+H#X%=
+=+M###############M,      ,/X#H+:,
+  .;XM###########H=   ,/X#H+:;
+     .=+HM#######M+/+HM@+=.
+         ,:/%XM####H/.
+              ,.:=-.
+
+No, it's not a lie.
+");
+                        break;
+
                 }
             } //commands
         }
@@ -494,14 +534,16 @@ Silent commands: 2
             Console.WriteLine(@$"
 
         <-. (`-')_      {current_user}@{device_name}
-       \( OO) )         OS: {system}
+       \( OO) )         OS: {system} Life Modification
     ,--./ ,--/          Ver: {version}
-    |   \ |  |          
+    |   \ |  |          Device name: {device_name}
     |  . '|  |)         
     |  |\    |          
-    |  | \   |          
+    |  | \   |          Custon by perryTheBallo0n
     `--'  `--' 
 ");
+
+
         }
         public static string read_file(string path)
         {
@@ -557,6 +599,7 @@ Silent commands: 2
                 }
             }
         }
+
     }
 
     //config (kak banal'no blen)

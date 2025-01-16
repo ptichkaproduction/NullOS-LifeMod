@@ -14,7 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NullOS
+namespace NullOS_LifeMod
 {
     internal class boot
     {
