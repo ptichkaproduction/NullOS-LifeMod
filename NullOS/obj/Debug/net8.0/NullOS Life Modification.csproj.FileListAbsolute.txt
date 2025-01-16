@@ -1,0 +1,15 @@
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\bin\Debug\net8.0\NullOS Life Modification.exe
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\bin\Debug\net8.0\NullOS Life Modification.deps.json
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\bin\Debug\net8.0\NullOS Life Modification.runtimeconfig.json
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\bin\Debug\net8.0\NullOS Life Modification.dll
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\bin\Debug\net8.0\NullOS Life Modification.pdb
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.AssemblyInfoInputs.cache
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.AssemblyInfo.cs
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.csproj.CoreCompileInputs.cache
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.sourcelink.json
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.dll
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\refint\NullOS Life Modification.dll
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.pdb
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\NullOS Life Modification.genruntimeconfig.cache
+C:\Users\impan\Documents\GitHub\NullOS-LifeMod\NullOS\obj\Debug\net8.0\ref\NullOS Life Modification.dll
